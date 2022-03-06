@@ -8,11 +8,77 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
-    MyTest {
-        id: myTest
+    property string defURL: "http://192.168.2.121/"
+
+    SensorRequester {
+        id: rquestCo2
+
+        baseUrl: defURL + "co2"
+
+        onSensorValueChanged: {
+            console.log( sensorValue, sensorUnit )
+        }
+
+        Component.onCompleted: {
+            vRequest();
+        }
     }
 
-    Component.onCompleted: {
-        myTest.test( "here comes the output" )
+    SensorRequester {
+        id: rquestTemp
+
+        baseUrl: defURL + "temperature"
+
+        onSensorValueChanged: {
+            console.log( sensorValue, sensorUnit )
+        }
+
+        Component.onCompleted: {
+            vRequest();
+        }
+    }
+
+    SensorRequester {
+        id: rquestHumidity
+
+        baseUrl: defURL + "humidity"
+
+        onSensorValueChanged: {
+            console.log( sensorValue, sensorUnit )
+        }
+
+        Component.onCompleted: {
+            vRequest();
+        }
+    }
+
+    Column {
+        id: displayAll
+
+        anchors.centerIn: parent
+
+        SensorDisplay {
+            id: displayCo2
+
+            sensorName: "Co2"
+            sensorValue: rquestCo2.sensorValue
+            sensorUnit: rquestCo2.sensorUnit
+        }
+
+        SensorDisplay {
+            id: displayTemp
+
+            sensorName: "Temperature"
+            sensorValue: rquestTemp.sensorValue
+            sensorUnit: rquestTemp.sensorUnit
+        }
+
+        SensorDisplay {
+            id: displayHumidity
+
+            sensorName: "Humidity"
+            sensorValue: rquestHumidity.sensorValue
+            sensorUnit: rquestHumidity.sensorUnit
+        }
     }
 }

@@ -1,5 +1,6 @@
 #include "luftwaechterapi.h"
 #include "mytest.h"
+#include "sensorrequester.hpp"
 
 LuftwaechterApi_ptr LuftwaechterApi::_helper_singleton( nullptr );
 
@@ -30,4 +31,5 @@ void LuftwaechterApi::registerQMLTypes()
 {
     qmlRegisterType<LuftwaechterApi>("LuftwaechterApi", 1, 0, "PluginExample");
     qmlRegisterType<MyTest>("LuftwaechterApi", 1,0, "MyTest");
+    qmlRegisterType<SensorRequester>("LuftwaechterApi", 1,0, "SensorRequester");
 }

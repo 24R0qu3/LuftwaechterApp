@@ -9,7 +9,6 @@ android-*: {
         IMPORTS_PATH_NAME = imports
 }
 
-
 # INTERMEDIATE FOLDERS - in Temp directory
 OBJECTS_DIR	=	$$OUT_PWD/temp/obj
 MOC_DIR		=	$$OUT_PWD/temp/moc
@@ -19,6 +18,7 @@ DESTDIR		=	$$OUT_PWD/../bin/$${IMPORTS_PATH_NAME}/$$TARGET
 
 include(LuftwaechterApi-components.pri)
 include( plugin/LuftwaechterApi_plugin.pri )
+
 
 # Plugin in folder imports in build directory
 DISTFILES = $${PWD}/qmldir \
